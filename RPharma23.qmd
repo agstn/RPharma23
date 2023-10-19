@@ -1,0 +1,339 @@
+---
+title:     'Interactive Data Visualization for Enhanced Clinical Trial Reporting {{< fa file-lines >}}' 
+author:    "<h2>**Agustin Calatroni** <br> ![AXC](pic/Agustin_2.jpg){width=12%}</h2>"
+affiliation: Rho Inc.
+date:        "`r format(Sys.time(),format='%A %d %b %Y')`"
+date-format: full
+
+execute:
+   echo:    false
+   warning: false
+   message: false
+   cache:   false
+
+format:
+   revealjs:
+    height: 900
+    width: 1600
+    self-contained: true
+    slide-number: c/t
+    controls: true
+    
+filters:
+  - code-fullscreen
+---
+
+```{r}
+pacman::p_load(tidyverse, rio)
+pacman::p_load(labelled)
+pacman::p_load(gt, gtsummary)
+pacman::p_load(slickR)
+```
+
+### Abstract
+
+> ::: {style="line-height: normal; font-size: 42px"}
+> [**Wonderful Wednesday (WW)**](https://www.psiweb.org/sigs-special-interest-groups/visualisation/welcome-to-wonderful-wednesdays) is an initiative of the [Visualization Interest Group (VIS SIG)](https://www.psiweb.org/sigs-special-interest-groups/visualisation) within the Statisticians in the [Pharmaceutical Industry group (PSI)](Pharmaceutical%20Industry%20group%20(PSI)), focusing on enhancing data visualization skills for clinical trials. I have [actively contributed](https://github.com/agstn/WW) to this **open-source initiative**, improving interactive trial reports and statistical data visualization. <br> During the presentation, attendees will be introduced to a comprehensive **interactive [subject profile](https://agstn.github.io/PatientProfiler/PatientProfiler.html)** comprising numerous Analysis Data Model (ADaM) datasets, offering a well-rounded view of each participant. Additionally, we will showcase [**dataxray**](https://github.com/agstn/dataxray), a tool designed to generate concise statistical descriptions of these datasets. We will conclude by presenting a detailed [**statistical analysis report**](https://agstn.github.io/CGM/) displaying individual patient data and overall treatment effects on a unified dashboard. <br> A key benefit of these interactive reports is their ability to be easily shared (emailed, deployed on an internal company webpage, or added to GitHub pages) due to their server-free architecture. Efforts are also underway to integrate these reports into production by incorporating them into the safety monitoring system for clinical trials.
+> :::
+
+::: {.notes}
+In this talk, I will first introduce the Wonderful Wednesday initiative. I will then describe some strategies and R packages I have used to enhance my data visualization. Next, I will highlight some of my more innovative interactive entries. Finally, I will conclude with a slide providing links to the code and all of my entries, whether static or interactive.
+:::
+
+# Genesis of Wonderful Wednesday <br> <small>A Visualization Initiative</small> {background="#43464B"}
+
+::: {.notes}
+What is Wonderful Wednesday?
+:::
+
+## {{< fa wand-magic-sparkles >}} {background-iframe="https://www.psiweb.org/sigs-special-interest-groups/visualisation/welcome-to-wonderful-wednesdays" background-interactive="TRUE" #slide3-id data-menu-title="Welcome to Wonderful Wednesday"}
+
+::: {.notes}
+Wonderful Wednesday (WW) is an initiative of the Visualization Interest Group (VIS SIG) within the Statisticians in the Pharmaceutical Industry group (PSI). It focuses on enhancing data visualization skills for clinical trials. The goal is to get statisticians involved and develop their data visualization knowledge and skills.
+Here's how it works: Each month a new challenge is provided, which includes a relevant dataset, often related to clinical trials. You then load the dataset, work on your own entry, and submit it along with your code.
+:::
+
+## {{< fa brands github >}} {background-image="img/VIS-SIG_Wonderful-Wednesdays_github_v1.png" #slide4-id data-menu-title="WWW github 1"}
+
+::: {.notes}
+The data can be obtained from the Wonderful Wednesday GitHub repository, which contains current and past datasets. I've highlighted a few examples here.
+:::
+
+## {{< fa brands github >}} {background-image="img/VIS-SIG_Wonderful-Wednesdays_github_v2.png" #slide5-id data-menu-title="WWW github 2"}
+## {{< fa brands github >}} {background-image="img/VIS-SIG_Wonderful-Wednesdays_github_v3.png" #slide6-id data-menu-title="WWW github 3"}
+## {{< fa brands github >}} {background-image="img/VIS-SIG_Wonderful-Wednesdays_github_v4.png" #slide7-id data-menu-title="WWW github 4"}
+
+## {{< fa blog >}} {background-iframe="https://vis-sig.github.io/blog/" background-interactive="TRUE" #slide8-id data-menu-title="WWW blog"}
+
+::: {.notes}
+Once a month, a group of experts meets to review entries and provide feedback. This gives insight into different approaches to the data visualization challenges. Discussion notes are available in the Wonderful Wednesday blog.
+:::
+
+<!-- ## {{< fa video >}} {background-iframe="https://psiweb.org/vod/Index/" background-interactive="TRUE"  #slide9-id data-menu-title="WWW VOD"} -->
+## {{< fa video >}} {background-image="img/Video-on-Demand - www.psiweb.org.png" background-interactive="TRUE"  #slide9-id data-menu-title="WWW VOD"}
+
+::: {.notes}
+Furthermore, each of the open meetings is recorded, and the video library is available. This huge resource allows you to look back at past challenges, entries, and discussions to improve your data visualization skills.
+:::
+
+# Interactive Reports in Focus: <br> <small> Key Approaches and Features</small> {background="#43464B"}
+
+::: {.notes}
+Now that I've briefly described the Wonderful Wednesday challenges, I'll present several strategies I've used in some entries to provide interactive visualizations.
+:::
+
+## {background-iframe="_extensions/trelliscopejs-fall/index.html"}
+
+::: {style="background-color: #ffffffbb; border-radius: 10px; padding: 5px;"}
+::: r-fit-text
+[trelliscopejs](https://hafen.github.io/trelliscopejs/){preview-link="true"}
+:::
+:::
+
+::: {.notes}
+First, let me introduce trelliscopejs - a scalable, flexible, interactive approach to visualizing data.
+:::
+
+## `trelliscopejs` ADaM ADLB Laboratory Test Result Data
+
+::: panel-tabset
+### Code
+```{r, file = '_examples/trelliscopejs/trelliscope_adlb.r'}
+#| eval: false
+#| echo: true
+```
+### Report
+```{=html}
+<div class="cell">
+<iframe src="_examples/trelliscopejs/trelliscope_adlb/index.html?showcase=0" width="1700px" height="650px" data-external="1">
+</iframe>
+</div>
+```
+### Code: `facet_trelliscope`
+```{r}
+#| eval: false
+#| echo: true
+#| code-line-numbers: "5-9"
+ggplot(data = adlb,
+       aes(y = AVAL, x = ADY, label = AVISIT, label2 = AVISITN ) ) +
+   geom_point() +
+   geom_line() +
+   facet_trelliscope(~ USUBJID + PARAM , 
+                     nrow = 2, ncol = 2,
+                     scales = 'free',
+                     width = 300,
+                     as_plotly = FALSE) +
+   theme_bw() +
+   theme( panel.grid.minor = element_blank() )
+```
+:::
+
+::: {.notes}
+Here I've used the ADaM laboratory test result data to illustrate trelliscopejs. You can write your own plot or use the simplified facet_trelliscope function. The ADaM data is from a CDISC Pilot Project dataset, often used when developing standardized reports.
+
+As you can see in the code, I import/prep the data and then use nesting to create a plot/plotly for each individual. These plots get passed to trelliscopejs to create the interactive report.
+
+This report contains all the individual plots in an app that lets you easily navigate - changing the grid, adding/removing labels, filtering, sorting, etc.
+To allow for more widespread usage, the developer has included a facet_trelliscope function which quickly defaults to the app with minimal effort.
+:::
+
+##  {background-iframe="_examples/trelliscopejs/trelliscope_adlb/index.html" background-interactive="TRUE"  #slide14-id data-menu-title="Example ADaM ADLB Full"}
+
+::: {.notes}
+Here I've zoomed into the app to briefly illustrate its advantages. For example, I can quickly change the grid to have more rows or columns.
+
+The labels in each plot can also be increased/decreased - here I'll remove all but the subject ID.
+
+Filtering is extremely useful to focus on certain parameters. Here I'll filter to one participant to see all their lab results.
+
+Finally, you can sort between figures using any statistic. Here I've sorted by variability, which may not make sense given different lab tests. It would be better to filter one lab and sort by variability to see high variability patients.
+
+:::
+
+#  {background-iframe="_extensions/flexdashboard-fall/index.html" #slide15-id data-menu-title="flexdashboard-fall"}
+
+::: {style="background-color: #ffffffbb; border-radius: 10px; padding: 5px;"}
+::: r-fit-text
+[flexdashboard](https://pkgs.rstudio.com/flexdashboard/){preview-link="true"}
+:::
+:::
+
+::: {.notes}
+Next is flexdashboard - an R package that makes interactive dashboards using R Markdown. R Shiny's Quarto dashboard is under development but not released, so I'll demonstrate flexdashboard.
+:::
+
+##  {background-iframe="_examples/flexdashboard/dashboard_layout.html" background-interactive="TRUE" #slide16-id data-menu-title="flexdashboard-app"}
+
+::: {.notes}
+It provides several layouts to present data complexly - using tabs, areas, pages, subtitles, tiles, etc. Here are 8 examples - the source code shows how to create each layout. I especially like using tiles and storyboards to present figures/tables in a linear, logical order.
+:::
+
+#  {background-iframe="_extensions/reactable-fall/index.html" #slide17-id data-menu-title="reactable-fall"}
+
+::: {style="background-color: #ffffffbb; border-radius: 10px; padding: 5px;"}
+::: r-fit-text
+[reactable](https://glin.github.io/reactable/index.html){preview-link="true"}
+:::
+:::
+
+::: {.notes}
+Reactable is another interactive data table option for R. It's powerful because you can nest rows within rows, enabling hierarchical data display.
+:::
+
+## `reactable` ADaM ADLB Laboratory Test Result Dataset
+
+::: panel-tabset
+### Code
+```{r, file = '_examples/reactable/reactable_adlb.r'}
+#| eval: false
+#| echo: true
+```
+### Report
+```{=html}
+<div class="cell">
+<iframe src="_examples/reactable/reactable_adlb.html?showcase=0" width="1700px" height="650px" data-external="1">
+</iframe>
+</div>
+```
+
+:::
+
+::: {.notes}
+Here's a toy ADaM example nesting data tables and figures within a reactable. Because it can filter easily, you can focus on certain people or measurements.
+:::
+
+#  Interactive Reports Showcases: <br> <small> Personal Highlights of Wonderful Wednesday's {{< fa wand-magic-sparkles >}} </small> {background="#43464B"}
+
+::: {.notes}
+Now that I've shown some tools I've used for Wonderful Wednesday visualizations, I'll highlight 3 particular examples.
+:::
+
+#  {background-iframe="2021-08-11/index.html" background-interactive="TRUE" #slide20-id data-menu-title="Continuous Glucose Monitoring (CGM) Visualization App" }
+
+::: {.notes}
+In this Continuous Glucose Monitoring challenge from August 2021, the goal was to visually show a dose response in glycemic control for the treatment, with higher doses giving lower variability and better control than standard of care. This control should be sustained over time.
+
+First, I always suggest looking at individual patients - here's a trelliscope with each participant's glucose by visit. There are 596 participants/visits in this interactive app.
+
+By nesting this in a flexdashboard, the next tab shows the model results using recursive partitioning, clearly indicating the higher % of targeted glucose ranges for higher treatment doses.
+
+Finally, since many CGM summary metrics exist, the last tab provides a page for each statistic. The definitions page describes each one with code/references.
+
+:::
+
+#  {background-iframe="2022-06-08/PatientProfiler.html" background-interactive="TRUE" #slide21-id data-menu-title="Patient Profiler App"}
+
+::: {.notes}
+Next is a patient profiler using CDISC pilot data and reactable nesting to explore each participant's complete ADaM dataset.
+We can quickly subset to a specific participant or treatment and explore their data.
+The CHEM tab sparklines each lab with normal ranges. The EX tab shows exposure over time. Similarly for ADAE and ADCM. Interactive figures provide details via tooltips.
+:::
+
+#  {background-iframe="_extensions/dataxray-fall/index.html" #slide22-id data-menu-title="dataxray-fall"}
+
+::: {.notes}
+Finally, I'll introduce dataxray - originally for a Wonderful Wednesday univariate statistics challenge, now an R package using reactable and crosstalk.
+:::
+
+::: {style="background-color: #ffffffbb; border-radius: 10px; padding: 5px;"}
+::: r-fit-text
+[dataxray](https://github.com/agstn/dataxray)
+:::
+:::
+
+## `dataxray` ADaM ADSL Subject-level Analysis Dataset
+::: panel-tabset
+### R Code
+```{r, file = '_examples/dataxray/ADSL/Study CDISCPilot01_ADSL_dxray.r'}
+#| eval: false
+#| echo: true
+```
+### RStudio IDE Viewer
+```{=html}
+<div class="cell">
+<iframe src="_examples/dataxray/ADSL/Study CDISCPilot01_ADSL_viewer.html?showcase=0" width="1700px" height="700px" data-external="1">
+</iframe>
+</div>
+```
+### Report
+```{=html}
+<div class="cell">
+<iframe src="_examples/dataxray/ADSL/Study CDISCPilot01_ADSL_xray.html?showcase=0" width="1700px" height="700px" data-external="1">
+</iframe>
+</div>
+```
+:::
+
+::: {.notes}
+It's easily generated with this code - you can view the report in RStudio or generate a full report for a dataset.
+It evaluates each variable - type, name, label, counts, extent, histogram. For numerics like age, it quickly shows distribution, stats, etc. It can filter variables by attributes like missing data.
+:::
+
+## `dataxray` ADaM ADLB Laboratory Test Result Dataset
+::: panel-tabset
+### R Code
+```{r, file = '_examples/dataxray/ADLB/Study CDISCPilot01_ADLB_dxray.r'}
+#| eval: false
+#| echo: true
+```
+### RStudio IDE Viewer
+```{=html}
+<div class="cell">
+<iframe src="_examples/dataxray/ADLB/Study CDISCPilot01_ADLB_viewer.html?showcase=0" width="1700px" height="700px" data-external="1">
+</iframe>
+</div>
+```
+### Report
+```{=html}
+<div class="cell">
+<iframe src="_examples/dataxray/ADLB/Study CDISCPilot01_ADLB_xray.html?showcase=0" width="1700px" height="700px" data-external="1">
+</iframe>
+</div>
+```
+:::
+
+::: {.notes}
+Since ADaM data is often long format, it can generate reports by parameter as well.
+:::
+
+# From Visualization to Voice: <br> <small>Wonderful Wednesday's Panel Video Discussions</small> {background-color="black" background-image="img/Video-on-Demand - www.psiweb.org.png" background-opacity="0.25"}
+
+<h4>
+- [PSI VisSIG Wonderful Wednesday 19: Continuous Glucose Monitoring data example](https://psiweb.org/vod/item/psi-vissig-wonderful-wednesday-19-continuous-glucose-monitoring-data-example#video_604040068){preview-link="true"}
+
+- [PSI VisSIG Wonderful Wednesday 29: Graphical patient profiles](https://www.psiweb.org/vod/item/psi-vissig-wonderful-wednesday-29-graphical-patient-profiles){preview-link="true"}
+
+- [PSI VisSIG Wonderful Wednesday 22: Alzheimer demographic data](https://www.psiweb.org/vod/item/psi-vissig-wonderful-wednesday-22-alzheimer-demographic-data){preview-link="true"}
+</h4>
+
+::: {.notes}
+I've included links to the expert discussion of each entry - to learn from their suggestions and feedback.
+:::
+
+#  From Static to Interactive: <br><small>A Walkthrough of My Contributions to Wonderful Wednesday</small> {background="#43464B"}
+
+::: {.notes}
+Finally, I've included all my Wonderful Wednesday entries - some static, some interactive. The challenges provide a playground to apply new ideas that I then incorporate into my daily work as a statistician.
+:::
+
+## {background-iframe="_examples/slickR/slickR.html?showcase=0"}
+
+::: aside
+<small>[TOC Wonderful-Wednesdays](https://github.com/agstn/WW){target="_blank"}</small>
+:::
+
+::: {.notes}
+Finally, I've included all my Wonderful Wednesday entries - some static, some interactive. The challenges provide a playground to apply new ideas that I then incorporate into my daily work as a statistician.
+:::
+
+# Thanks! <br>
+
+<h2> Questions  &nbsp; [{{< fa envelope size=1.5x >}}](mailto:acalatroni@gmail.com){preview-link="false" target="_blank"} <br>
+
+Slides & Code {{< fa brands github size=1.5x >}} &nbsp; [github.com/agstn/RPharma23](https://github.com/agstn/RPharma23) </h2>
+
+::: {.notes}
+Thank you for your attention. Please email me with any questions. I've created a GitHub repo with these slides and code. 
+:::
+
+

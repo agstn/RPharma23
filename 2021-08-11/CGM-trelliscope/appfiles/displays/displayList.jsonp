@@ -1,0 +1,12 @@
+__loadDisplayList__3d42166e([
+  {
+    "group": "common",
+    "name": "CGM__Continuous_Glucose_Monitoring_Visualization",
+    "desc": "Display Ambulatory Glucose Profile (AGP) statistics",
+    "n": 596,
+    "height": 900,
+    "width": 700,
+    "updated": "2021-09-02 20:40:33",
+    "keySig": "a017e502470f3983ac638180307ecb67"
+  }
+])
