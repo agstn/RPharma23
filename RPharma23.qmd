@@ -2,7 +2,8 @@
 title:     'Interactive Data Visualization for Enhanced Clinical Trial Reporting {{< fa file-lines >}}' 
 author:    "<h2>**Agustin Calatroni** <br> ![AXC](pic/Agustin_2.jpg){width=12%}</h2>"
 affiliation: Rho Inc.
-date:        "`r format(Sys.time(),format='%A %d %b %Y')`"
+date:        "Monday, October 16, 2023"
+# date:        "`r format(Sys.time(),format='%A %d %b %Y')`"
 date-format: full
 
 execute:
@@ -19,9 +20,14 @@ format:
     slide-number: c/t
     controls: true
     
+preload-iframes: true
+    
 filters:
   - code-fullscreen
 ---
+
+<!-- quarto-iframe-examples -->
+<!-- https://github.com/EmilHvitfeldt/quarto-iframe-examples/tree/main -->
 
 ```{r}
 pacman::p_load(tidyverse, rio)
