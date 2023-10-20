@@ -19,7 +19,7 @@ format:
     self-contained: true
     slide-number: c/t
     controls: true
-    
+
 preload-iframes: true
     
 filters:
@@ -101,6 +101,10 @@ First, let me introduce trelliscopejs - a scalable, flexible, interactive approa
 :::
 
 ## `trelliscopejs` ADaM ADLB Laboratory Test Result Data
+
+```{=html}
+<script src="https://unpkg.com/trelliscopejs-lib/dist/trelliscope.min.js"></script>
+```
 
 ::: panel-tabset
 ### Code
