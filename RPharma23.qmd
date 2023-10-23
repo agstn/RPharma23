@@ -330,6 +330,26 @@ I've included links to the expert discussion of each entry - to learn from their
 Finally, I've included all my Wonderful Wednesday entries - some static, some interactive. The challenges provide a playground to apply new ideas that I then incorporate into my daily work as a statistician.
 :::
 
+
+```{=html}
+<meta charset="utf-8"/>
+<style>body{background-color:white;}</style>
+
+<script src="_examples/slickR/slickR_files/css-resize-1.2.1/ElementQueries.js"></script>
+<script src="_examples/slickR/slickR_files/css-resize-1.2.1/ResizeSensor.js"></script>
+
+<script src="_examples/slickR/slickR_files/htmlwidgets-1.6.2/htmlwidgets.js"></script>
+
+<script src="_examples/slickR/slickR_files/jquery-3.4.1/jquery-3.4.1.min.js"></script>
+
+<script src="_examples/slickR/slickR_files/jquery-migrate-3.1.0/jquery-migrate-3.1.0.min.js"></script>
+
+<script src="_examples/slickR/slickR_files/slick-1.8.1/slick/slick.js"></script>
+<script src="_examples/slickR/slickR_files/slick-1.8.1/slick/slick.min.js"></script>
+
+<script src="_examples/slickR/slickR_files/slickR-0.0.2/slickR.js"></script>
+```
+
 ## {background-iframe="_examples/slickR/slickR.html?showcase=0"}
 
 ::: aside
