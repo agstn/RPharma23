@@ -16,7 +16,7 @@ format:
    revealjs:
     height: 900
     width: 1600
-    self-contained: true
+    embed-resources: true
     slide-number: c/t
     controls: true
 
@@ -115,7 +115,7 @@ First, let me introduce trelliscopejs - a scalable, flexible, interactive approa
 ### Report
 ```{=html}
 <div class="cell">
-<iframe src="_examples/trelliscopejs/trelliscope_adlb/index.html?showcase=0" width="1700px" height="650px" data-external="1">
+<iframe src="_examples/trelliscopejs/trelliscope_adlb/index.html?showcase=0" width="1700px" height="650px">
 </iframe>
 </div>
 ```
@@ -201,7 +201,7 @@ Reactable is another interactive data table option for R. It's powerful because 
 ### Report
 ```{=html}
 <div class="cell">
-<iframe src="_examples/reactable/reactable_adlb.html?showcase=0" width="1700px" height="650px" data-external="1">
+<iframe src="_examples/reactable/reactable_adlb.html?showcase=0" width="1700px" height="650px">
 </iframe>
 </div>
 ```
@@ -261,14 +261,14 @@ Finally, I'll introduce dataxray - originally for a Wonderful Wednesday univaria
 ### RStudio IDE Viewer
 ```{=html}
 <div class="cell">
-<iframe src="_examples/dataxray/ADSL/Study CDISCPilot01_ADSL_viewer.html?showcase=0" width="1700px" height="700px" data-external="1">
+<iframe src="_examples/dataxray/ADSL/Study CDISCPilot01_ADSL_viewer.html?showcase=0" width="1700px" height="700px">
 </iframe>
 </div>
 ```
 ### Report
 ```{=html}
 <div class="cell">
-<iframe src="_examples/dataxray/ADSL/Study CDISCPilot01_ADSL_xray.html?showcase=0" width="1700px" height="700px" data-external="1">
+<iframe src="_examples/dataxray/ADSL/Study CDISCPilot01_ADSL_xray.html?showcase=0" width="1700px" height="700px">
 </iframe>
 </div>
 ```
@@ -289,14 +289,14 @@ It evaluates each variable - type, name, label, counts, extent, histogram. For n
 ### RStudio IDE Viewer
 ```{=html}
 <div class="cell">
-<iframe src="_examples/dataxray/ADLB/Study CDISCPilot01_ADLB_viewer.html?showcase=0" width="1700px" height="700px" data-external="1">
+<iframe src="_examples/dataxray/ADLB/Study CDISCPilot01_ADLB_viewer.html?showcase=0" width="1700px" height="700px">
 </iframe>
 </div>
 ```
 ### Report
 ```{=html}
 <div class="cell">
-<iframe src="_examples/dataxray/ADLB/Study CDISCPilot01_ADLB_xray.html?showcase=0" width="1700px" height="700px" data-external="1">
+<iframe src="_examples/dataxray/ADLB/Study CDISCPilot01_ADLB_xray.html?showcase=0" width="1700px" height="700px">
 </iframe>
 </div>
 ```
