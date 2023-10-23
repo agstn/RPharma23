@@ -88,6 +88,10 @@ Furthermore, each of the open meetings is recorded, and the video library is ava
 Now that I've briefly described the Wonderful Wednesday challenges, I'll present several strategies I've used in some entries to provide interactive visualizations.
 :::
 
+```{=html}
+<script src="_extensions/trelliscopejs-fall/script.js"></script>
+```
+
 ## {background-iframe="_extensions/trelliscopejs-fall/index.html"}
 
 ::: {style="background-color: #ffffffbb; border-radius: 10px; padding: 5px;"}
