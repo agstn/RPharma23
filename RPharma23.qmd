@@ -19,6 +19,9 @@ format:
     embed-resources: true
     slide-number: c/t
     controls: true
+    include-in-header:
+      - text: |
+          <script src="https://unpkg.com/trelliscopejs-lib/dist/trelliscope.min.js"></script>
 
 preload-iframes: true
     
@@ -88,7 +91,7 @@ Furthermore, each of the open meetings is recorded, and the video library is ava
 Now that I've briefly described the Wonderful Wednesday challenges, I'll present several strategies I've used in some entries to provide interactive visualizations.
 :::
 
-## {background-iframe="_extensions/trelliscopejs-fall/index.html"}
+## {background-iframe="_extensions/trelliscopejs-fall/index.html" background-interactive="TRUE"}
 
 ::: {style="background-color: #ffffffbb; border-radius: 10px; padding: 5px;"}
 ::: r-fit-text
@@ -115,7 +118,7 @@ First, let me introduce trelliscopejs - a scalable, flexible, interactive approa
 ### Report
 ```{=html}
 <div class="cell">
-<iframe src="_examples/trelliscopejs/trelliscope_adlb/index.html?showcase=0" width="1700px" height="650px">
+<iframe src="_examples/trelliscopejs/trelliscope_adlb/index.html?showcase=0" width="1700px" height="650px" data-external="1">
 </iframe>
 </div>
 ```
@@ -160,7 +163,7 @@ Finally, you can sort between figures using any statistic. Here I've sorted by v
 
 :::
 
-#  {background-iframe="_extensions/flexdashboard-fall/index.html" #slide15-id data-menu-title="flexdashboard-fall"}
+#  {background-iframe="_extensions/flexdashboard-fall/index.html" background-interactive="TRUE" #slide15-id data-menu-title="flexdashboard-fall"}
 
 ::: {style="background-color: #ffffffbb; border-radius: 10px; padding: 5px;"}
 ::: r-fit-text
@@ -178,7 +181,7 @@ Next is flexdashboard - an R package that makes interactive dashboards using R M
 It provides several layouts to present data complexly - using tabs, areas, pages, subtitles, tiles, etc. Here are 8 examples - the source code shows how to create each layout. I especially like using tiles and storyboards to present figures/tables in a linear, logical order.
 :::
 
-#  {background-iframe="_extensions/reactable-fall/index.html" #slide17-id data-menu-title="reactable-fall"}
+#  {background-iframe="_extensions/reactable-fall/index.html"  background-interactive="TRUE" #slide17-id data-menu-title="reactable-fall"}
 
 ::: {style="background-color: #ffffffbb; border-radius: 10px; padding: 5px;"}
 ::: r-fit-text
@@ -201,7 +204,7 @@ Reactable is another interactive data table option for R. It's powerful because 
 ### Report
 ```{=html}
 <div class="cell">
-<iframe src="_examples/reactable/reactable_adlb.html?showcase=0" width="1700px" height="650px">
+<iframe src="_examples/reactable/reactable_adlb.html?showcase=0" width="1700px" height="650px" data-external="1">
 </iframe>
 </div>
 ```
@@ -239,7 +242,7 @@ We can quickly subset to a specific participant or treatment and explore their d
 The CHEM tab sparklines each lab with normal ranges. The EX tab shows exposure over time. Similarly for ADAE and ADCM. Interactive figures provide details via tooltips.
 :::
 
-#  {background-iframe="_extensions/dataxray-fall/index.html" #slide22-id data-menu-title="dataxray-fall"}
+#  {background-iframe="_extensions/dataxray-fall/index.html"  background-interactive="TRUE" #slide22-id data-menu-title="dataxray-fall"}
 
 ::: {.notes}
 Finally, I'll introduce dataxray - originally for a Wonderful Wednesday univariate statistics challenge, now an R package using reactable and crosstalk.
@@ -261,14 +264,14 @@ Finally, I'll introduce dataxray - originally for a Wonderful Wednesday univaria
 ### RStudio IDE Viewer
 ```{=html}
 <div class="cell">
-<iframe src="_examples/dataxray/ADSL/Study CDISCPilot01_ADSL_viewer.html?showcase=0" width="1700px" height="700px">
+<iframe src="_examples/dataxray/ADSL/Study CDISCPilot01_ADSL_viewer.html?showcase=0" width="1700px" height="700px" data-external="1">
 </iframe>
 </div>
 ```
 ### Report
 ```{=html}
 <div class="cell">
-<iframe src="_examples/dataxray/ADSL/Study CDISCPilot01_ADSL_xray.html?showcase=0" width="1700px" height="700px">
+<iframe src="_examples/dataxray/ADSL/Study CDISCPilot01_ADSL_xray.html?showcase=0" width="1700px" height="700px" data-external="1">
 </iframe>
 </div>
 ```
@@ -289,14 +292,14 @@ It evaluates each variable - type, name, label, counts, extent, histogram. For n
 ### RStudio IDE Viewer
 ```{=html}
 <div class="cell">
-<iframe src="_examples/dataxray/ADLB/Study CDISCPilot01_ADLB_viewer.html?showcase=0" width="1700px" height="700px">
+<iframe src="_examples/dataxray/ADLB/Study CDISCPilot01_ADLB_viewer.html?showcase=0" width="1700px" height="700px" data-external="1">
 </iframe>
 </div>
 ```
 ### Report
 ```{=html}
 <div class="cell">
-<iframe src="_examples/dataxray/ADLB/Study CDISCPilot01_ADLB_xray.html?showcase=0" width="1700px" height="700px">
+<iframe src="_examples/dataxray/ADLB/Study CDISCPilot01_ADLB_xray.html?showcase=0" width="1700px" height="700px" data-external="1">
 </iframe>
 </div>
 ```
@@ -326,7 +329,7 @@ I've included links to the expert discussion of each entry - to learn from their
 Finally, I've included all my Wonderful Wednesday entries - some static, some interactive. The challenges provide a playground to apply new ideas that I then incorporate into my daily work as a statistician.
 :::
 
-## {background-iframe="_examples/slickR/slickR.html?showcase=0"}
+## {background-iframe="_examples/slickR/slickR.html?showcase=0"  background-interactive="TRUE"}
 
 ::: aside
 <small>[TOC Wonderful-Wednesdays](https://github.com/agstn/WW){target="_blank"}</small>
