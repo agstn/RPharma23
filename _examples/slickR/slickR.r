@@ -1,5 +1,6 @@
 # PACKAGES 
 pacman::p_load(tidyverse, rio)
+pacman::p_load(htmlwidgets)
 pacman::p_load(slickR)
 
 # IMPORT
@@ -12,4 +13,4 @@ slickR(obj      = ww_c$Image,
        height = 725,
        width = "95%") %synch%
    ( slickR(ww_c$Title, slideType = 'p', height = 70, padding = 0) + settings(arrows = FALSE) ) %>% 
-   htmlwidgets:::saveWidget(file = '_examples/slickR/slickR.html')
+   saveWidget(file = '_examples/slickR/slickR.html', selfcontained = TRUE)
