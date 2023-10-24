@@ -261,16 +261,12 @@ Finally, I'll introduce dataxray - originally for a Wonderful Wednesday univaria
 #| eval: false
 #| echo: true
 ```
-### RStudio IDE Viewer {.scrollable}
-```{r}
-# devtools::install_github("agstn/dataxray")
-library(dataxray)
-
-adsl_orig <- import('2022-06-08/dat/adsl.xpt')
-
-adsl_orig %>% 
-   make_xray() %>% 
-   view_xray()
+### RStudio IDE Viewer
+```{=html}
+<div class="cell">
+<iframe src="_examples/dataxray/ADSL/Study CDISCPilot01_ADSL_viewer.html?showcase=0" width="1700px" height="700px" data-external="1">
+</iframe>
+</div>
 ```
 ### Report
 ```{=html}
@@ -292,6 +288,13 @@ It evaluates each variable - type, name, label, counts, extent, histogram. For n
 ```{r, file = '_examples/dataxray/ADLB/Study CDISCPilot01_ADLB_dxray.r'}
 #| eval: false
 #| echo: true
+```
+### RStudio IDE Viewer
+```{=html}
+<div class="cell">
+<iframe src="_examples/dataxray/ADLB/Study CDISCPilot01_ADLB_viewer.html?showcase=0" width="1700px" height="700px" data-external="1">
+</iframe>
+</div>
 ```
 ### Report
 ```{=html}
@@ -326,11 +329,10 @@ I've included links to the expert discussion of each entry - to learn from their
 Finally, I've included all my Wonderful Wednesday entries - some static, some interactive. The challenges provide a playground to apply new ideas that I then incorporate into my daily work as a statistician.
 :::
 
-## 
+## {#slide27-id data-menu-title="WW-slickR"}
 
 ```{r}
 pacman::p_load(tidyverse, rio)
-pacman::p_load(htmlwidgets)
 pacman::p_load(slickR)
 
 ww_c <- rio::import('img/ww_contributions.xlsx')
